@@ -1,0 +1,3205 @@
+:root {
+  /* App and editor tokens intentionally share one theme switch. */
+  --bg: #f4f7fb;
+  --background: #f4f7fb;
+  --surface: rgba(255, 255, 255, .86);
+  --surface-solid: #ffffff;
+  --sidebar: #111827;
+  --sidebar-soft: #1e293b;
+  --sidebar-2: #17223a;
+  --sidebar-text: #e9edff;
+  --sidebar-muted: #98a5c0;
+  --sidebar-item: #c3cce0;
+  --sidebar-item-hover: rgba(255, 255, 255, .09);
+  --sidebar-line: rgba(174, 184, 207, .2);
+  --sidebar-line-strong: rgba(255, 255, 255, .12);
+  --sidebar-chip: rgba(255, 255, 255, .07);
+  --sidebar-chip-border: rgba(255, 255, 255, .1);
+  --text: #172033;
+  --text-primary: #172033;
+  --text-secondary: #6f7a91;
+  --muted: #6f7a91;
+  --line: #e2e8f0;
+  --border: #e2e8f0;
+  --accent: #5667f5;
+  --on-accent: #ffffff;
+  --accent-strong: #414fd6;
+  --accent-soft: #eef1ff;
+  --heading: #414fd6;
+  --note-text: #172033;
+  --note-highlight: #fff3b0;
+  --editor-background: #ffffff;
+  --editor-text: #172033;
+  --editor-gutter: #f6f8fa;
+  --editor-gutter-text: #6f7a91;
+  --editor-selection: rgba(86, 103, 245, .23);
+  --color-white: #ffffff;
+  --color-black: #172033;
+  --color-red: #c6283d;
+  --color-orange: #c76513;
+  --color-yellow: #9a7100;
+  --color-green: #287a46;
+  --color-emerald: #087f72;
+  --color-cyan: #087f9d;
+  --color-blue: #2459b8;
+  --color-indigo: #414fd6;
+  --color-purple: #7346b8;
+  --color-pink: #b52b74;
+  --color-gray: #687386;
+  --danger: #df3d50;
+  --success: #21875a;
+  --shadow: 0 10px 28px rgba(31, 41, 55, .12);
+  --header-height: 56px;
+}
+
+/* Image editing tokens live on body (not :root) so var(--accent) tracks each
+   theme's accent; themes may override them individually. */
+body {
+  --image-border: rgba(0, 0, 0, .35);
+  --image-border-selected: var(--accent);
+  --image-handle: var(--surface-solid);
+  --image-handle-border: var(--accent);
+  --image-handle-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+  --image-watermark: var(--muted);
+}
+
+body.dark,
+html.theme-dark body {
+  --bg: #0c1220;
+  --background: #0c1220;
+  --surface: rgba(20, 29, 46, .9);
+  --surface-solid: #141d2f;
+  --sidebar: #080d17;
+  --sidebar-soft: #192237;
+  --sidebar-2: #17223a;
+  --sidebar-text: #e9edff;
+  --sidebar-muted: #98a5c0;
+  --sidebar-item: #c3cce0;
+  --sidebar-item-hover: rgba(255, 255, 255, .09);
+  --sidebar-line: rgba(174, 184, 207, .2);
+  --sidebar-line-strong: rgba(255, 255, 255, .12);
+  --sidebar-chip: rgba(255, 255, 255, .07);
+  --sidebar-chip-border: rgba(255, 255, 255, .1);
+  --text: #eff3ff;
+  --text-primary: #eff3ff;
+  --text-secondary: #9ba8c0;
+  --muted: #9ba8c0;
+  --line: #27334a;
+  --border: #27334a;
+  --accent: #8f96ff;
+  --on-accent: #ffffff;
+  --accent-strong: #aeb3ff;
+  --accent-soft: #282d57;
+  --heading: #b7bcff;
+  --note-text: #eff3ff;
+  --note-highlight: rgba(246, 210, 107, .27);
+  --editor-background: #101827;
+  --editor-text: #eff3ff;
+  --editor-gutter: #0b1220;
+  --editor-gutter-text: #9ba8c0;
+  --editor-selection: rgba(143, 150, 255, .38);
+  --color-white: #ffffff;
+  --color-black: #eff3ff;
+  --color-red: #ff7f91;
+  --color-orange: #ffb067;
+  --color-yellow: #f6d26b;
+  --color-green: #78d99a;
+  --color-emerald: #59d8c5;
+  --color-cyan: #6edcf5;
+  --color-blue: #82b7ff;
+  --color-indigo: #b7bcff;
+  --color-purple: #c6a2ff;
+  --color-pink: #ff9dce;
+  --color-gray: #c2cada;
+  --danger: #ff7784;
+  --success: #60d69b;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .42);
+}
+
+/* ---- Theme 3: Ember — warm dark amber, full application palette ---- */
+html[data-app-theme="ember"] body {
+  --bg: #1c1210;
+  --background: #1c1210;
+  --surface: rgba(43, 27, 23, .9);
+  --surface-solid: #2b1b17;
+  --sidebar: #1b0f0d;
+  --sidebar-soft: #2a1713;
+  --sidebar-2: #331c16;
+  --sidebar-text: #f2d5c4;
+  --sidebar-muted: #b8927d;
+  --sidebar-item: #e5c3b0;
+  --sidebar-item-hover: rgba(255, 171, 112, .14);
+  --sidebar-line: rgba(201, 138, 102, .35);
+  --sidebar-line-strong: rgba(255, 171, 112, .22);
+  --sidebar-chip: rgba(255, 171, 112, .12);
+  --sidebar-chip-border: rgba(255, 171, 112, .24);
+  --text: #f2d5c4;
+  --text-primary: #f2d5c4;
+  --text-secondary: #c9a08a;
+  --muted: #c9a08a;
+  --line: #4a2f26;
+  --border: #4a2f26;
+  --accent: #ffab70;
+  --on-accent: #2a1408;
+  --accent-strong: #ffcb96;
+  --accent-soft: #3d2419;
+  --heading: #ffcb96;
+  --note-text: #f2d5c4;
+  --note-highlight: rgba(255, 201, 150, .3);
+  --editor-background: #221614;
+  --editor-text: #f2d5c4;
+  --editor-gutter: #1b0f0d;
+  --editor-gutter-text: #8a6752;
+  --editor-selection: rgba(255, 171, 112, .3);
+  --color-white: #ffffff;
+  --color-black: #f2d5c4;
+  --color-red: #ff8f7a;
+  --color-orange: #ffab70;
+  --color-yellow: #ffd28a;
+  --color-green: #b8d99a;
+  --color-emerald: #7fd4a8;
+  --color-cyan: #8fd0e8;
+  --color-blue: #9fc2f0;
+  --color-indigo: #ffcb96;
+  --color-purple: #e0a8f0;
+  --color-pink: #f5a3c0;
+  --color-gray: #c9a08a;
+  --danger: #ff8f7a;
+  --success: #8fd48a;
+  --shadow: 0 10px 28px rgba(0, 0, 0, .46);
+}
+
+/* ---- Theme 4: Phosphor — fresh light mint, full application palette ---- */
+html[data-app-theme="phosphor"] body {
+  --bg: #f4fbf6;
+  --background: #f4fbf6;
+  --surface: rgba(255, 255, 255, .9);
+  --surface-solid: #ffffff;
+  --sidebar: #e7f4eb;
+  --sidebar-soft: #d8eee0;
+  --sidebar-2: #cde8d6;
+  --sidebar-text: #14432a;
+  --sidebar-muted: #5c8a70;
+  --sidebar-item: #24543a;
+  --sidebar-item-hover: rgba(30, 158, 90, .14);
+  --sidebar-line: rgba(30, 158, 90, .28);
+  --sidebar-line-strong: rgba(30, 158, 90, .22);
+  --sidebar-chip: rgba(30, 158, 90, .1);
+  --sidebar-chip-border: rgba(30, 158, 90, .26);
+  --text: #173b27;
+  --text-primary: #173b27;
+  --text-secondary: #5c8a70;
+  --muted: #5c8a70;
+  --line: #cde5d4;
+  --border: #cde5d4;
+  --accent: #1e9e5a;
+  --on-accent: #ffffff;
+  --accent-strong: #147a44;
+  --accent-soft: #ddf3e5;
+  --heading: #147a44;
+  --note-text: #173b27;
+  --note-highlight: #d7f2df;
+  --editor-background: #f4fbf6;
+  --editor-text: #20402c;
+  --editor-gutter: #e7f4eb;
+  --editor-gutter-text: #5c8a70;
+  --editor-selection: rgba(30, 158, 90, .24);
+  --color-white: #ffffff;
+  --color-black: #173b27;
+  --color-red: #b3372f;
+  --color-orange: #a85a12;
+  --color-yellow: #8a6a00;
+  --color-green: #1e7a44;
+  --color-emerald: #087f72;
+  --color-cyan: #087f9d;
+  --color-blue: #1e5fa8;
+  --color-indigo: #147a44;
+  --color-purple: #6b3fa8;
+  --color-pink: #a82b66;
+  --color-gray: #5c7264;
+  --danger: #c6283d;
+  --success: #1e7a44;
+  --shadow: 0 10px 28px rgba(23, 59, 39, .12);
+  /* Image editing tokens — theme-aware, visible on light and dark images. */
+  --image-border: rgba(0, 0, 0, .35);
+  --image-border-selected: var(--accent);
+  --image-handle: var(--surface-solid);
+  --image-handle-border: var(--accent);
+  --image-handle-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+  --image-watermark: var(--muted);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overscroll-behavior: none;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  transition: background .2s ease, color .2s ease;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+button {
+  border: 0;
+}
+
+kbd {
+  font-family: inherit;
+}
+
+/* ── Touch & press feedback ──────────────────────────────────────────────
+   Blink/WebKit paint a solid blue flash on tap by default. Kill it globally,
+   then supply our own press state built from the active theme's tokens:
+   --accent-soft / --accent-strong are redefined by light, dark, ember and
+   phosphor, so the feedback colour follows the selected theme automatically
+   instead of one hardcoded value. Keyboard focus rings are intentionally
+   left alone so accessibility is preserved. */
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* manipulation drops the double-tap-zoom delay, which otherwise makes taps
+   feel dropped on Android. */
+button,
+select,
+summary,
+label,
+[role="button"],
+[role="tab"],
+[role="menuitem"],
+.topic-card,
+.mobile-home-topic,
+.mobile-home-subtopic,
+.recent-item,
+.theme-option,
+.image-preset,
+.alignment-button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Surfaces with a transparent/neutral background get a theme-tinted wash.
+   The inset shadow paints over the existing background but under the label,
+   so it tints any surface without hiding its text or fighting its own style. */
+.topic-card:active,
+.subtopic-card:active,
+.mobile-home-topic:active,
+.mobile-home-subtopic:active,
+.recent-item:active,
+.recent-panel-button:active,
+.theme-option:active,
+.image-preset:active,
+.alignment-button:active,
+.text-button:active,
+.secondary-button:active,
+.note-tab:active {
+  box-shadow: inset 0 0 0 100vmax var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+/* Buttons that already carry their own fill (accent, danger, chips) keep their
+   contrast and just darken slightly — brightness adapts to whatever colour the
+   active theme gives them, so no per-theme rule is needed. */
+.primary-button:active:not(:disabled),
+.new-topic-button:active:not(:disabled),
+.tool-button:active:not(:disabled),
+.circle-button:active:not(:disabled),
+.icon-button:active:not(:disabled),
+.tree-toggle:active:not(:disabled),
+.topic-menu:active:not(:disabled),
+.modal-close:active:not(:disabled),
+.sidebar-collapse-toggle:active:not(:disabled),
+.focus-restore-button:active:not(:disabled),
+#imageContextClose:active {
+  filter: brightness(.9);
+}
+
+button:disabled {
+  cursor: default;
+}
+
+.app-shell {
+  position: relative;
+  /* vh first (works on every engine), then dvh where supported — the same
+     dual-declaration pattern the mobile sidebar uses. The shell must have a
+     definite height on every device: the home notes list is sized by flex
+     against it, and without a definite shell the list grows unbounded and
+     bottom notes become unreachable (nothing left to scroll inside). */
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  background: var(--bg);
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 15;
+  width: min(320px, 88vw);
+  min-height: 100dvh;
+  padding: 16px 14px max(14px, env(safe-area-inset-bottom));
+  color: var(--sidebar-text);
+  background: var(--sidebar);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-105%);
+  transition: transform .24s ease, width .18s ease, background .25s;
+  box-shadow: var(--shadow);
+}
+
+/* Mobile: start the panel below the status bar / notch and bound it to the
+   remaining screen height so nothing is cut off or overlaps system UI. */
+@media (max-width: 759.98px) {
+  .sidebar {
+    top: env(safe-area-inset-top, 0px);
+    height: calc(100vh - env(safe-area-inset-top, 0px));
+    height: calc(100dvh - env(safe-area-inset-top, 0px));
+    min-height: 0;
+    overflow: hidden;
+    padding: 16px max(14px, env(safe-area-inset-right)) max(14px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
+  }
+}
+
+.sidebar.open {
+  transform: none;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 7px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.brand > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-radius: 6px;
+  font-size: 12px;
+  box-shadow: none;
+}
+
+/* Shared desktop/mobile sidebar control, placed after the title in the header. */
+.new-topic-button,
+.primary-button,
+.secondary-button,
+.text-button {
+  min-height: 40px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: filter .14s, background .14s, color .14s;
+}
+
+.new-topic-button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 8px 12px;
+  color: var(--on-accent);
+  background: var(--accent);
+  box-shadow: none;
+}
+
+.new-topic-button kbd {
+  margin-left: auto;
+  color: var(--on-accent);
+  opacity: .7;
+  font-size: 10px;
+  padding: 1px 5px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+}
+
+.new-topic-button:hover,
+.primary-button:hover {
+  filter: brightness(1.07);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 34px;
+  margin: 12px 0;
+  padding: 0 11px;
+  color: var(--sidebar-muted);
+  background: var(--sidebar-chip);
+  border: 1px solid var(--sidebar-chip-border);
+  border-radius: 6px;
+}
+
+.search-box:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--sidebar-item-hover);
+}
+
+.search-box input {
+  min-width: 0;
+  flex: 1;
+  outline: 0;
+  border: 0;
+  color: var(--sidebar-text);
+  background: transparent;
+  font-size: 14px;
+}
+
+.search-box input::placeholder {
+  color: var(--sidebar-muted);
+}
+
+.search-box kbd,
+.utility-button kbd {
+  color: var(--sidebar-muted);
+  font-size: 10px;
+  white-space: nowrap;
+  padding: 1px 5px;
+  border: 1px solid var(--sidebar-chip-border);
+  border-radius: 4px;
+  background: var(--sidebar-chip);
+}
+
+.topics-heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 7px 8px;
+  color: var(--sidebar-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+
+.recent-heading {
+  padding-top: 12px;
+}
+
+/* Sidebar Recent button — opens the Recent panel (Settings-style dialog). */
+.recent-panel-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  margin-top: 10px;
+  min-height: 30px;
+  padding: 6px 9px;
+  color: var(--sidebar-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  cursor: pointer;
+  transition: background .14s, color .14s, border-color .14s;
+}
+.recent-panel-button:hover,
+.recent-panel-button:focus-visible {
+  color: var(--sidebar-text);
+  background: var(--sidebar-item-hover);
+  outline: none;
+}
+.recent-panel-button-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.recent-panel-count {
+  min-width: 20px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 10px;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+/* Recent panel dialog */
+.recent-modal-hint {
+  margin: -6px 0 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.recent-panel-list {
+  max-height: min(46dvh, 420px);
+  overflow-y: auto;
+}
+.recent-panel-list .recent-item {
+  min-height: 42px;
+  color: var(--text);
+}
+.recent-panel-list .recent-item:hover,
+.recent-panel-list .recent-item:focus-visible {
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  outline: none;
+}
+.recent-panel-list .no-results {
+  color: var(--muted);
+}
+.recent-item-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.recent-item-text > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.recent-item-parent {
+  color: var(--sidebar-muted);
+  font-size: 10px;
+  font-weight: 600;
+}
+.recent-panel-list .recent-item-parent {
+  color: var(--muted);
+}
+
+.topic-list,
+.recent-list {
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.topic-list {
+  flex: 1;
+  flex-basis: 0;
+  position: relative;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.topic-list::-webkit-scrollbar,
+.recent-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.topic-list::-webkit-scrollbar-thumb,
+.recent-list::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, .5);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.topic-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  margin-bottom: 2px;
+  padding: 6px 8px;
+  color: var(--sidebar-item);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .16s, color .16s;
+}
+
+.tree-toggle {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 28px;
+  flex: 0 0 24px;
+  color: var(--sidebar-muted);
+  background: transparent;
+  border-radius: 6px;
+}
+
+.tree-toggle:hover {
+  background: var(--sidebar-item-hover);
+}
+
+.subtopic-list {
+  margin: -2px 0 6px 13px;
+  padding-left: 16px;
+  border-left: 1px solid var(--sidebar-line);
+}
+
+.subtopic-card {
+  min-height: 38px;
+  margin-bottom: 1px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.subtopic-card .topic-name {
+  font-size: 12px;
+}
+
+.tree-branch {
+  width: 24px;
+  flex: 0 0 24px;
+  color: var(--sidebar-muted);
+  font: 600 13px/1 "JetBrains Mono", Consolas, monospace;
+}
+
+.topic-card:hover,
+.topic-card.active {
+  color: var(--sidebar-text);
+  background: var(--sidebar-item-hover);
+}
+
+.topic-card.active {
+  box-shadow: inset 3px 0 var(--accent);
+}
+
+.topic-folder {
+  color: var(--accent);
+  width: 18px;
+  text-align: center;
+}
+
+.topic-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.topic-name,
+.recent-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topic-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.topic-date,
+.topic-excerpt {
+  margin-top: 3px;
+  color: var(--sidebar-muted);
+  font-size: 10px;
+}
+
+.topic-excerpt {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--sidebar-muted);
+}
+
+.topic-meta {
+  display: flex;
+  gap: 5px;
+  color: var(--color-yellow);
+  font-size: 11px;
+}
+
+.topic-menu {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: var(--sidebar-item);
+  background: transparent;
+  border-radius: 5px;
+}
+
+.topic-card:hover .topic-menu,
+.topic-menu:focus-visible {
+  background: var(--sidebar-item-hover);
+}
+
+.topic-actions {
+  position: absolute;
+  right: 8px;
+  top: 43px;
+  z-index: 5;
+  display: none;
+  gap: 2px;
+  flex-wrap: wrap;
+  width: max-content;
+  max-width: 152px;
+  padding: 5px;
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.topic-actions.open {
+  display: flex;
+}
+
+.topic-actions button {
+  width: 34px;
+  height: 32px;
+  color: var(--text);
+  background: transparent;
+  border-radius: 7px;
+}
+
+.topic-actions button:hover {
+  background: var(--accent-soft);
+}
+
+.recent-list {
+  max-height: 124px;
+}
+
+.recent-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 34px;
+  padding: 7px 8px;
+  color: var(--sidebar-item);
+  background: transparent;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.recent-item:hover {
+  background: var(--sidebar-item-hover);
+}
+
+.no-results {
+  margin: 8px;
+  color: var(--sidebar-muted);
+  font-size: 12px;
+}
+
+.no-results.compact {
+  margin-top: 0;
+}
+
+/* ---- Theme slider (sidebar) ---- */
+.theme-slider-block {
+  margin-bottom: 10px;
+  padding: 10px 9px 12px;
+  background: var(--sidebar-chip);
+  border: 1px solid var(--sidebar-chip-border);
+  border-radius: 6px;
+}
+
+.theme-slider-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.theme-slider-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--sidebar-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.theme-slider-value {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.theme-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 26px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.theme-slider::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f4f7fb 0%, #0c1220 33%, #2a1713 66%, #e7f4eb 100%);
+  border: 1px solid var(--sidebar-line);
+}
+
+.theme-slider::-moz-range-track {
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f4f7fb 0%, #0c1220 33%, #2a1713 66%, #e7f4eb 100%);
+  border: 1px solid var(--sidebar-line);
+}
+
+.theme-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--surface-solid);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
+  transition: transform .12s;
+}
+
+.theme-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--surface-solid);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
+}
+
+.theme-slider:hover::-webkit-slider-thumb,
+.theme-slider:focus-visible::-webkit-slider-thumb { transform: scale(1.12); }
+
+.theme-slider:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 999px;
+}
+
+.theme-slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  padding: 0 7px;
+}
+
+.theme-slider-ticks span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sidebar-muted);
+  opacity: .55;
+}
+
+.theme-slider-ticks span.active {
+  background: var(--accent);
+  opacity: 1;
+  box-shadow: 0 0 0 3px var(--sidebar-chip);
+}
+
+/* ---- Settings theme section (the app's single theme control) ---- */
+.settings-theme-section {
+  margin-top: 14px;
+}
+.settings-modal .theme-slider-block {
+  margin: 0 0 4px;
+  background: var(--bg);
+  border-color: var(--line);
+}
+.settings-modal .theme-slider-label {
+  color: var(--muted);
+}
+
+.settings-section-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.theme-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.theme-option {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 9px;
+  align-items: center;
+  padding: 10px;
+  background: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .14s, background .14s;
+}
+
+.theme-option:hover {
+  border-color: var(--accent);
+}
+
+.theme-option:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.theme-option.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.theme-swatch {
+  grid-row: 1 / span 2;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  box-shadow: inset 0 0 0 2px var(--surface-solid);
+}
+
+.swatch-light { background: linear-gradient(135deg, #f4f7fb 50%, #5667f5 50%); }
+.swatch-dark { background: linear-gradient(135deg, #0c1220 50%, #8f96ff 50%); }
+.swatch-ember { background: linear-gradient(135deg, #221614 50%, #ffab70 50%); }
+.swatch-phosphor { background: linear-gradient(135deg, #f4fbf6 50%, #1e9e5a 50%); }
+
+.theme-option-name {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.theme-option-desc {
+  grid-column: 2;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.theme-option.active .theme-option-name::after {
+  content: " ✓";
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.sidebar-footer {
+  margin-top: 10px;
+  padding: 10px 3px 0;
+  border-top: 1px solid var(--sidebar-line-strong);
+}
+.developer-credit {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--sidebar-line-strong);
+  color: var(--sidebar-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: .03em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.developer-star {
+  color: var(--color-yellow);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.utility-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 40px;
+  padding: 9px;
+  color: var(--sidebar-item);
+  background: transparent;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.utility-button:hover {
+  background: var(--sidebar-item-hover);
+}
+
+.utility-button kbd {
+  margin-left: auto;
+}
+
+.footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 7px;
+}
+
+.icon-button,
+.circle-button,
+.tool-button {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  color: inherit;
+  background: transparent;
+  border-radius: 6px;
+  transition: background .16s, color .16s;
+}
+
+.icon-button:hover,
+.circle-button:hover,
+.tool-button:hover,
+.tool-button.active {
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+}
+
+.tool-button.active {
+  border-color: var(--accent);
+}
+
+.main-content {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: calc(var(--header-height) + env(safe-area-inset-top, 0px));
+  padding: env(safe-area-inset-top, 0px) max(14px, env(safe-area-inset-right)) 0 max(14px, env(safe-area-inset-left));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--text);
+  background: var(--surface-solid);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Touch-first control sizing: the shared icon/tool buttons shrink for the
+   dense desktop chrome, so phones get their 40px hit targets back. */
+@media (max-width: 759.98px) {
+  .icon-button,
+  .circle-button,
+  .tool-button {
+    width: 40px;
+    height: 40px;
+  }
+  .split-pane-close {
+    width: 32px;
+    height: 32px;
+  }
+  .modal-close {
+    width: 40px;
+    height: 40px;
+  }
+  .note-tab-close {
+    flex-basis: 26px;
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.mobile-brand {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+
+/* 38px strip: 6px padding + 32px tabs, so tabs share the row height with the
+   sidebar control and the strip's border line stays clean. */
+.note-tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  min-height: 38px;
+  padding: 6px max(10px, env(safe-area-inset-right)) 0 max(10px, env(safe-area-inset-left));
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  background: var(--surface-solid);
+  border-bottom: 1px solid var(--line);
+  /* The strip still scrolls (wheel, trackpad, or the active tab scrolling into
+     view), but without a scrollbar row: a visible bar would shorten the strip
+     and lift the tabs off the border line they sit on. */
+  scrollbar-width: none;
+}
+.note-tabs::-webkit-scrollbar {
+  height: 0;
+}
+/* Opaque lane above the sidebar control so tabs scrolling underneath it are
+   masked instead of colliding with the button. The strip must NOT pad this
+   gutter: a sticky element is clamped inside its containing block (the content
+   box), so a left padding would shift the mask on top of the first tab and
+   clip its icon and title. The lane element itself reserves the 52px gutter
+   and, with no padding, its sticky `left: 0` pins it over the strip's left
+   edge at every scroll position. */
+@media (min-width: 760px) {
+  body:not(.focus-mode) .note-tabs::before {
+    content: '';
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    flex: 0 0 52px;
+    align-self: stretch;
+    pointer-events: none;
+    background: var(--surface-solid);
+  }
+}
+.note-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  min-width: 0;
+  max-width: min(220px, 26vw);
+  min-height: 32px;
+  padding: 0 6px 0 10px;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-bottom-color: transparent;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+.note-tab:hover,
+.note-tab.active {
+  color: var(--text);
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.note-tab.active {
+  position: relative;
+  z-index: 1;
+  color: var(--accent-strong);
+}
+.note-tab-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.note-tab-close {
+  display: grid;
+  place-items: center;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.note-tab-close:hover { color: var(--danger); background: rgba(223, 61, 80, .12); }
+
+.note-tab-context-menu {
+  position: fixed;
+  z-index: 120;
+  min-width: 190px;
+  padding: 4px;
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+}
+.note-tab-context-menu button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 32px;
+  padding: 0 9px;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+}
+.note-tab-context-menu button:hover,
+.note-tab-context-menu button:focus-visible {
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  outline: 0;
+}
+
+.editor-area {
+  height: calc(100vh - var(--header-height) - env(safe-area-inset-top, 0px));
+  height: calc(100dvh - var(--header-height) - env(safe-area-inset-top, 0px));
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 14px max(10px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+}
+
+.editor-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.title-block {
+  min-width: 0;
+}
+
+.eyebrow {
+  display: none;
+}
+
+.editor-toolbar h1 {
+  margin: 0 0 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.editor-toolbar p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+.editor-actions,
+.quick-toolbar,
+.editor-search-panel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.editor-actions,
+.quick-toolbar {
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.editor-actions::-webkit-scrollbar,
+.quick-toolbar::-webkit-scrollbar,
+.editor-search-panel::-webkit-scrollbar {
+  height: 3px;
+}
+
+.select-control {
+  min-width: 110px;
+  height: 34px;
+  padding: 0 9px;
+  color: var(--text);
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  outline: 0;
+}
+
+.select-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(86, 103, 245, .16);
+}
+
+.circle-button,
+.tool-button {
+  color: var(--muted);
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+}
+
+.circle-button.active {
+  color: #c48b15;
+  background: #fff3cf;
+  border-color: #efd178;
+}
+
+html[data-app-theme="dark"] .circle-button.active,
+html[data-app-theme="ember"] .circle-button.active {
+  color: #f6d26b;
+  background: #46391b;
+  border-color: #705b25;
+}
+
+body.dark .circle-button.active {
+  color: #f6d26b;
+  background: #46391b;
+  border-color: #705b25;
+}
+
+.circle-button.danger:hover {
+  color: var(--danger);
+  background: rgba(223, 61, 80, .12);
+}
+
+.quick-toolbar {
+  min-height: 36px;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.editor-search-panel {
+  overflow-x: auto;
+  margin-bottom: 8px;
+  padding: 6px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.mini-field {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 170px;
+  height: 32px;
+  padding: 0 10px;
+  color: var(--muted);
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.mini-field input {
+  width: 100%;
+  min-width: 0;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.replace-field {
+  display: none;
+}
+
+.replace-open .replace-field {
+  display: flex;
+}
+
+.search-count {
+  min-width: max-content;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.mini-field:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(86, 103, 245, .16);
+}
+
+.editor-search-panel .text-button {
+  min-height: 32px;
+}
+
+.text-button {
+  min-width: max-content;
+  padding: 0 11px;
+  color: var(--text);
+  background: var(--accent-soft);
+}
+
+.editor-frame {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background: var(--editor-background);
+  border: 1px solid var(--line);
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, .05);
+}
+
+.editor-frame.preview-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.editor-frame.preview-split .editor-host {
+  min-width: 0;
+  min-height: 0;
+  border-right: 1px solid var(--line);
+}
+
+/* ── Split view: two independent notes side by side ──────────────────────
+   The frame becomes a 3-column grid: pane bar, pane, divider, pane. Widths are
+   driven by --split-left/--split-right (fr values set by the drag handler), so
+   resizing reflows both panes together. Row 1 is each pane's own header — kept
+   separate from the main note tabs above the frame — and row 2 is the editor,
+   so a header can never overlap its note. */
+.editor-frame.split-active {
+  display: grid;
+  grid-template-columns: minmax(0, var(--split-left, 1fr)) 10px minmax(0, var(--split-right, 1fr));
+  grid-template-rows: auto minmax(0, 1fr);
+  align-items: stretch;
+}
+.editor-frame.split-active .split-left-bar {
+  display: flex;
+  grid-area: 1 / 1;
+}
+.editor-frame.split-active .editor-host {
+  grid-area: 2 / 1;
+  min-width: 0;
+  min-height: 0;
+}
+.editor-frame.split-active .split-divider {
+  display: block;
+  grid-area: 1 / 2 / span 2;
+}
+.editor-frame.split-active .split-pane {
+  display: flex;
+  grid-area: 1 / 3 / span 2;
+}
+.editor-frame.split-active .markdown-preview {
+  display: none;
+}
+/* Clicking a panel makes it the one formatting actions apply to. The marker is
+   deliberately quiet: it only tints that panel's header. */
+.editor-frame.split-active .split-pane-bar.active {
+  background: var(--accent-soft);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.editor-frame.split-active .split-pane-bar.active .split-pane-title {
+  color: var(--accent-strong);
+}
+
+.split-divider {
+  position: relative;
+  flex: 0 0 10px;
+  align-self: stretch;
+  display: none;
+  z-index: 6;
+  cursor: col-resize;
+  touch-action: none;
+  background: var(--editor-background);
+}
+
+/* Desktop drag-and-drop into the editor: a theme-based dashed outline marks
+   the pane (or the whole workspace) that will receive the dragged note, with a
+   pill label naming the action. It is fixed and pointer-events-free, so it
+   never blocks the drop it is illustrating, and every colour comes from the
+   active theme's variables. */
+.split-drop-indicator {
+  position: fixed;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  border: 2px dashed var(--accent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .28);
+}
+
+.split-drop-indicator span {
+  padding: 7px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text);
+  background: var(--surface-solid, var(--surface));
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .3);
+}
+
+/* Empty workspace: same idea, painted on the panel itself. */
+.empty-state.drop-active {
+  outline: 2px dashed var(--accent);
+  outline-offset: -8px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.split-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 4px;
+  width: 2px;
+  background: var(--line);
+  border-radius: 999px;
+  transition: background .14s ease, width .14s ease, left .14s ease;
+}
+.split-divider:hover::before,
+.split-divider:active::before,
+body.split-resizing .split-divider::before {
+  left: 3px;
+  width: 4px;
+  background: var(--accent);
+}
+.split-divider:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  border-radius: 999px;
+}
+body.split-resizing .split-pane,
+body.split-resizing .editor-frame.split-active .editor-host {
+  transition: none;
+}
+
+.split-pane {
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  border-left: 1px solid var(--line);
+  background: var(--editor-background);
+}
+.split-pane-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  padding: 7px 9px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+.split-pane-title {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--heading);
+  font-size: 12px;
+  font-weight: 700;
+}
+.split-pane-select {
+  flex: 0 1 190px;
+  min-width: 96px;
+  max-width: 190px;
+  height: 28px;
+  padding: 0 6px;
+  font-size: 11px;
+}
+/* Each panel owns its editor appearance, so the theme picker lives in the
+   panel header right next to the note name it belongs to. */
+.split-pane-theme {
+  flex: 0 1 118px;
+  min-width: 86px;
+  max-width: 118px;
+  height: 28px;
+  padding: 0 6px;
+  font-size: 11px;
+}
+.split-left-bar {
+  border-bottom: 1px solid var(--line);
+}
+.split-left-bar .split-pane-title {
+  padding-left: 3px;
+}
+.split-pane-close {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+}
+.split-pane-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+.split-pane-body .fallback-editor-shell,
+.split-pane-body .rich-editor {
+  height: 100%;
+}
+.split-pane-body .rich-editor {
+  padding: 16px 18px;
+  color: var(--editor-text);
+  background: var(--editor-background);
+  font-size: var(--editor-font-size, 15px);
+  line-height: var(--editor-line-height);
+  outline: 0;
+}
+.split-pane-body .CodeMirror {
+  height: 100%;
+}
+.split-pane-empty {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+@media (max-width: 759.98px) {
+  .split-divider,
+  .split-pane {
+    display: none !important;
+  }
+  .editor-frame.split-active {
+    display: block;
+  }
+}
+.locked-note-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding: 24px;
+  color: var(--muted);
+  text-align: center;
+  background: var(--editor-background);
+}
+.locked-note-state h2,
+.locked-note-state p { margin: 0; }
+.locked-note-state h2 { color: var(--heading); font-size: 16px; font-weight: 600; }
+.locked-note-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+.editor-host,
+.editor-host .cm-editor {
+  height: 100%;
+}
+
+/* The divider is a real flex item between the sidebar and editor. This keeps its
+   hit target aligned with the actual panel boundary instead of the editor's
+   inner padding. */
+.sidebar-divider {
+  position: relative;
+  flex: 0 0 10px;
+  align-self: stretch;
+  z-index: 16;
+  cursor: col-resize;
+  display: none;
+  touch-action: none;
+}
+.sidebar-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 4px;
+  width: 2px;
+  background: var(--line);
+  border-radius: 999px;
+  transition: background .14s ease, width .14s ease, left .14s ease;
+}
+.sidebar-divider:hover::before,
+.sidebar-divider:active::before,
+body.sidebar-resizing .sidebar-divider::before {
+  left: 3px;
+  width: 4px;
+  background: var(--accent);
+}
+.sidebar-divider:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  border-radius: 999px;
+}
+
+/* The slider button (grip) is a child of the divider, so it tracks the panel
+   edge horizontally for free. Vertically it is centred inside the divider,
+   which stretches the full viewport height and never grows with the notes
+   list — so adding, deleting or scrolling notes cannot shift it. No JS writes
+   its position, so there are no content-driven layout shifts. */
+.sidebar-divider-thumb {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 46px;
+  border-radius: 999px;
+  background: var(--line);
+  pointer-events: none;
+  transition: background .14s ease, height .14s ease, box-shadow .14s ease;
+}
+.sidebar-divider:hover .sidebar-divider-thumb,
+.sidebar-divider:active .sidebar-divider-thumb,
+.sidebar-divider:focus-visible .sidebar-divider-thumb,
+body.sidebar-resizing .sidebar-divider-thumb {
+  height: 64px;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+/* Collapse hides the sidebar and divider; the single control below stays put,
+   anchored to the panel edge, so restoring the sidebar is always one click. */
+body.sidebar-collapsed .sidebar {
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+@media (min-width: 760px) {
+  .brand {
+    column-gap: 15px;
+  }
+  .sidebar-footer .footer-actions {
+    justify-content: space-between;
+    gap: 3px;
+  }
+  .sidebar-footer .footer-actions .icon-button {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Desktop-only: fullscreen is an independent window state. Hide both
+     sidebar affordances regardless of sidebar visibility; normal rules resume
+     when focus-mode is removed by the restore control. */
+  body.focus-mode .sidebar-divider,
+  body.focus-mode #sidebarCollapseToggle {
+    display: none !important;
+  }
+  body.sidebar-collapsed .sidebar {
+    transform: translateX(-105%);
+    width: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  body.sidebar-collapsed:not(.focus-mode) .sidebar {
+    transform: translateX(-105%);
+  }
+
+  /* The sidebar control lives in the note-tab row's left lane: it is exactly as
+     tall as a tab and vertically centred in the strip, so it never covers the
+     strip's border line, and because it is anchored inside .main-content it
+     travels with the panel edge when the sidebar divider is dragged. The 52px
+     gutter comes from the lane ::before (see above), not from padding: padding
+     would push the sticky lane's containing block over the first tab. */
+  #noteTabs {
+    padding-left: 0;
+  }
+  body:not(.focus-mode) .note-tabs.hidden + .editor-area {
+    padding-top: 48px;
+  }
+}
+/* Aligned with the note-tab row: the strip is 38px tall (6px padding + 32px tab),
+   so the button keeps a 32px box at top:3px and its bottom edge lands 3px above
+   the strip's border instead of covering it. */
+.sidebar-collapse-toggle {
+  position: absolute;
+  top: max(3px, env(safe-area-inset-top, 0px));
+  left: max(10px, env(safe-area-inset-left, 0px));
+  z-index: 12;
+  display: none;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  min-height: 32px;
+  padding: 0;
+  color: var(--text);
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: background .14s, transform .14s, color .14s;
+}
+
+.sidebar-collapse-toggle i {
+  font-size: 15px;
+}
+.sidebar-collapse-toggle:hover {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+.sidebar-collapse-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+@media (min-width: 760px) {
+  .sidebar-collapse-toggle {
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    padding: 0;
+    line-height: 1;
+  }
+  .sidebar-collapse-toggle i {
+    display: block;
+    font-size: 18px;
+    line-height: 1;
+  }
+}
+/* Drag stays 1:1 with the pointer; collapse/restore snaps smoothly. */
+body.sidebar-resizing .sidebar {
+  transition: none;
+}
+@media (min-width: 760px) {
+  .sidebar-divider {
+    display: block;
+  }
+  body.sidebar-collapsed .sidebar-divider {
+    display: none;
+  }
+}
+
+/* Sidebar resizing, the divider, and the desktop double-window controls are
+   intentionally unavailable on mobile. The mobile menu remains the only
+   navigation drawer control. */
+@media (max-width: 759.98px) {
+  #desktopSidebarToggle,
+  #sidebarDivider,
+  #sidebarCollapseToggle,
+  #sideCollapseToggle,
+  #splitViewButton,
+  #splitDivider,
+  #splitPane {
+    display: none !important;
+  }
+  body.sidebar-collapsed .sidebar {
+    transform: none;
+    pointer-events: auto;
+  }
+  body.sidebar-collapsed #sidebarCollapseToggle {
+    display: none !important;
+  }
+}
+
+.editor-host {
+  --editor-font-family: "JetBrains Mono", Consolas, monospace;
+  --editor-line-height: 1.65;
+  --editor-padding-block: 18px;
+}
+
+.editor-host .CodeMirror {
+  height: 100%;
+  font-family: var(--editor-font-family);
+  font-size: var(--editor-font-size, 15px);
+  line-height: var(--editor-line-height);
+}
+
+/* When the editor theme is "plain", the code editor follows the selected app
+   theme's editor tokens instead of CodeMirror's hardcoded white surface. */
+body[data-editor-theme="plain"] .editor-host .CodeMirror,
+body:not([data-editor-theme]) .editor-host .CodeMirror {
+  background: var(--editor-background);
+  color: var(--editor-text);
+}
+
+body[data-editor-theme="plain"] .editor-host .CodeMirror-gutters,
+body:not([data-editor-theme]) .editor-host .CodeMirror-gutters {
+  background: var(--editor-gutter);
+  border-right: 1px solid var(--line);
+}
+
+body[data-editor-theme="plain"] .editor-host .CodeMirror-linenumber,
+body:not([data-editor-theme]) .editor-host .CodeMirror-linenumber {
+  color: var(--editor-gutter-text);
+}
+
+body[data-editor-theme="plain"] .editor-host .CodeMirror-selected,
+body:not([data-editor-theme]) .editor-host .CodeMirror-selected {
+  background: var(--editor-selection);
+}
+
+body[data-editor-theme="plain"] .editor-host .CodeMirror-cursor,
+body:not([data-editor-theme]) .editor-host .CodeMirror-cursor {
+  border-left: 2px solid var(--accent);
+}
+
+body[data-editor-theme="plain"] .editor-host .CodeMirror-activeline-background,
+body:not([data-editor-theme]) .editor-host .CodeMirror-activeline-background {
+  background: var(--surface);
+}
+
+.editor-host .CodeMirror-lines {
+  padding: var(--editor-padding-block) 0;
+}
+
+.editor-host .CodeMirror pre.CodeMirror-line,
+.editor-host .CodeMirror pre.CodeMirror-line-like {
+  padding: 0 22px;
+}
+
+.editor-host.editor-empty .CodeMirror::before {
+  content: attr(data-placeholder);
+  position: absolute;
+  top: var(--editor-padding-block);
+  left: 58px;
+  z-index: 1;
+  max-width: calc(100% - 76px);
+  color: var(--text-secondary);
+  font: inherit;
+  line-height: inherit;
+  pointer-events: none;
+  user-select: none;
+}
+
+.fallback-editor-shell {
+  height: 100%;
+  overflow: hidden;
+  background: var(--editor-background);
+}
+
+.fallback-editor {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  outline: 0;
+  border: 0;
+  padding: var(--editor-padding-block) 22px;
+  color: var(--editor-text);
+  background: transparent;
+  font-family: var(--editor-font-family);
+  font-size: var(--editor-font-size, 15px);
+  line-height: var(--editor-line-height);
+  caret-color: var(--accent);
+}
+
+.rich-editor { overflow: auto; white-space: pre-wrap; }
+.rich-editor:empty::before { content: attr(data-placeholder); color: var(--text-secondary); pointer-events: none; }
+.native-color-picker { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+.fallback-editor::placeholder { color: var(--text-secondary); opacity: .8; }
+.fallback-editor::selection { color: var(--editor-text); background: var(--editor-selection); }
+
+/* The plain theme inherits the app's accessible light/dark tokens. The remaining
+   existing editor themes retain their own recognisable editor surface. */
+body:not(.dark)[data-editor-theme="github"] .fallback-editor-shell {
+  background: #ffffff;
+}
+
+body:not(.dark)[data-editor-theme="github"] .fallback-editor {
+  color: #24292f;
+}
+
+body[data-editor-theme="oneDark"] .fallback-editor-shell { background: #282c34; }
+body[data-editor-theme="oneDark"] .fallback-editor { color: #abb2bf; }
+
+body[data-editor-theme="dracula"] .fallback-editor-shell { background: #282a36; }
+body[data-editor-theme="dracula"] .fallback-editor { color: #f8f8f2; }
+
+body[data-editor-theme="monokai"] .fallback-editor-shell { background: #272822; }
+body[data-editor-theme="monokai"] .fallback-editor { color: #f8f8f2; }
+
+/* ---- Ember theme: warm dark amber palette ---- */
+body[data-editor-theme="ember"] .editor-frame,
+body[data-editor-theme="ember"] .fallback-editor-shell { background: #221614; }
+body[data-editor-theme="ember"] .editor-frame { border-color: #45302b; }
+body[data-editor-theme="ember"] .fallback-editor { color: #f2d5c4; caret-color: #ffab70; }
+body[data-editor-theme="ember"] .fallback-editor::selection { background: rgba(255, 171, 112, .3); color: #f2d5c4; }
+body[data-editor-theme="ember"] .CodeMirror { color: #f2d5c4 !important; background: #221614 !important; }
+body[data-editor-theme="ember"] .CodeMirror-gutters { background: #1b0f0d !important; border-right: 1px solid #3c271f !important; }
+body[data-editor-theme="ember"] .CodeMirror-linenumber { color: #8a6752 !important; }
+body[data-editor-theme="ember"] .CodeMirror-cursor { border-left: 2px solid #ffab70 !important; }
+body[data-editor-theme="ember"] .CodeMirror-selected { background: #4a2c1f !important; }
+body[data-editor-theme="ember"] .cm-keyword { color: #ffb37a !important; }
+body[data-editor-theme="ember"] .cm-def { color: #ffd28a !important; }
+body[data-editor-theme="ember"] .cm-variable { color: #f2d5c4 !important; }
+body[data-editor-theme="ember"] .cm-variable-2 { color: #e8a87c !important; }
+body[data-editor-theme="ember"] .cm-string { color: #d98e73 !important; }
+body[data-editor-theme="ember"] .cm-number { color: #ffab70 !important; }
+body[data-editor-theme="ember"] .cm-comment { color: #8a6752 !important; font-style: italic; }
+body[data-editor-theme="ember"] .cm-tag { color: #ffab70 !important; }
+body[data-editor-theme="ember"] .cm-attribute { color: #ffd28a !important; }
+body[data-editor-theme="ember"] .cm-property { color: #e8a87c !important; }
+body[data-editor-theme="ember"] .cm-operator { color: #c98a66 !important; }
+
+/* ---- Phosphor theme: soft light mint-green palette ---- */
+body[data-editor-theme="phosphor"] .editor-frame,
+body[data-editor-theme="phosphor"] .fallback-editor-shell { background: #f4fbf6; }
+body[data-editor-theme="phosphor"] .editor-frame { border-color: #cde5d4; }
+body[data-editor-theme="phosphor"] .fallback-editor { color: #20402c; caret-color: #1e9e5a; }
+body[data-editor-theme="phosphor"] .fallback-editor::selection { background: rgba(30, 158, 90, .24); color: #20402c; }
+body[data-editor-theme="phosphor"] .CodeMirror { color: #20402c !important; background: #f4fbf6 !important; }
+body[data-editor-theme="phosphor"] .CodeMirror-gutters { background: #e7f4eb !important; border-right: 1px solid #cde5d4 !important; }
+body[data-editor-theme="phosphor"] .CodeMirror-linenumber { color: #84ab93 !important; }
+body[data-editor-theme="phosphor"] .CodeMirror-cursor { border-left: 2px solid #1e9e5a !important; }
+body[data-editor-theme="phosphor"] .CodeMirror-selected { background: #c4ecd2 !important; }
+body[data-editor-theme="phosphor"] .cm-keyword { color: #0f7b43 !important; font-weight: 600; }
+body[data-editor-theme="phosphor"] .cm-def { color: #145c86 !important; }
+body[data-editor-theme="phosphor"] .cm-variable { color: #20402c !important; }
+body[data-editor-theme="phosphor"] .cm-variable-2 { color: #3a6b4a !important; }
+body[data-editor-theme="phosphor"] .cm-string { color: #7a5b12 !important; }
+body[data-editor-theme="phosphor"] .cm-number { color: #9a4a12 !important; }
+body[data-editor-theme="phosphor"] .cm-comment { color: #84ab93 !important; font-style: italic; }
+body[data-editor-theme="phosphor"] .cm-tag { color: #0f7b43 !important; }
+body[data-editor-theme="phosphor"] .cm-attribute { color: #145c86 !important; }
+body[data-editor-theme="phosphor"] .cm-property { color: #1e9e5a !important; }
+body[data-editor-theme="phosphor"] .cm-operator { color: #3a6b4a !important; }
+
+/* ── Per-panel editor themes ───────────────────────────────────────────────
+   The main pane keeps using the app-level `data-editor-theme` on <body>. The
+   right split pane carries its own attribute on #splitPaneBody, so a note keeps
+   its own editor appearance without repainting the other panel. These rules use
+   an ID, so they outrank the body-scoped blocks above even when those are
+   !important, and they are scoped to the split pane, so the main editor is
+   untouched. */
+#splitPaneBody {
+  --editor-font-size: 15px;
+  background: var(--editor-background);
+}
+#splitPaneBody .rich-editor {
+  color: var(--editor-text);
+  caret-color: var(--accent);
+  font-family: var(--editor-font-family);
+  font-size: var(--editor-font-size, 15px);
+  line-height: var(--editor-line-height);
+  /* The pane itself carries the theme surface, so the text layer must not paint
+     its own background over it (the base .split-pane-body rule is light). */
+  background: transparent;
+}
+#splitPaneBody .CodeMirror {
+  font-family: var(--editor-font-family);
+  font-size: var(--editor-font-size, 15px);
+  line-height: var(--editor-line-height);
+}
+#splitPaneBody[data-editor-theme="plain"] { background: var(--editor-background); }
+#splitPaneBody[data-editor-theme="plain"] .rich-editor { color: var(--editor-text); }
+#splitPaneBody[data-editor-theme="plain"] .CodeMirror { background: var(--editor-background) !important; color: var(--editor-text) !important; }
+#splitPaneBody[data-editor-theme="plain"] .CodeMirror-gutters { background: var(--editor-gutter) !important; border-right: 1px solid var(--line) !important; }
+#splitPaneBody[data-editor-theme="plain"] .CodeMirror-linenumber { color: var(--editor-gutter-text) !important; }
+#splitPaneBody[data-editor-theme="plain"] .CodeMirror-cursor { border-left: 2px solid var(--accent) !important; }
+#splitPaneBody[data-editor-theme="plain"] .CodeMirror-selected { background: var(--editor-selection) !important; }
+
+#splitPaneBody[data-editor-theme="github"] { background: #ffffff; }
+#splitPaneBody[data-editor-theme="github"] .rich-editor { color: #24292f; }
+#splitPaneBody[data-editor-theme="github"] .CodeMirror { background: #ffffff !important; color: #24292f !important; }
+#splitPaneBody[data-editor-theme="github"] .CodeMirror-gutters { background: #f6f8fa !important; border-right: 1px solid #d0d7de !important; }
+#splitPaneBody[data-editor-theme="github"] .CodeMirror-linenumber { color: #8c959f !important; }
+#splitPaneBody[data-editor-theme="github"] .CodeMirror-cursor { border-left: 2px solid #0969da !important; }
+#splitPaneBody[data-editor-theme="github"] .CodeMirror-selected { background: #cfe3fb !important; }
+
+#splitPaneBody[data-editor-theme="ember"] { background: #221614; }
+#splitPaneBody[data-editor-theme="ember"] .rich-editor { color: #f2d5c4; caret-color: #ffab70; }
+#splitPaneBody[data-editor-theme="ember"] .rich-editor::selection { background: rgba(255, 171, 112, .3); color: #f2d5c4; }
+#splitPaneBody[data-editor-theme="ember"] .CodeMirror { color: #f2d5c4 !important; background: #221614 !important; }
+#splitPaneBody[data-editor-theme="ember"] .CodeMirror-gutters { background: #1b0f0d !important; border-right: 1px solid #3c271f !important; }
+#splitPaneBody[data-editor-theme="ember"] .CodeMirror-linenumber { color: #8a6752 !important; }
+#splitPaneBody[data-editor-theme="ember"] .CodeMirror-cursor { border-left: 2px solid #ffab70 !important; }
+#splitPaneBody[data-editor-theme="ember"] .CodeMirror-selected { background: #4a2c1f !important; }
+#splitPaneBody[data-editor-theme="ember"] .cm-keyword { color: #ffb37a !important; }
+#splitPaneBody[data-editor-theme="ember"] .cm-def { color: #ffd28a !important; }
+#splitPaneBody[data-editor-theme="ember"] .cm-variable { color: #f2d5c4 !important; }
+#splitPaneBody[data-editor-theme="ember"] .cm-variable-2 { color: #e8a87c !important; }
+#splitPaneBody[data-editor-theme="ember"] .cm-string { color: #d98e73 !important; }
+#splitPaneBody[data-editor-theme="ember"] .cm-number { color: #ffab70 !important; }
+#splitPaneBody[data-editor-theme="ember"] .cm-comment { color: #8a6752 !important; font-style: italic; }
+#splitPaneBody[data-editor-theme="ember"] .cm-tag { color: #ffab70 !important; }
+#splitPaneBody[data-editor-theme="ember"] .cm-attribute { color: #ffd28a !important; }
+#splitPaneBody[data-editor-theme="ember"] .cm-property { color: #e8a87c !important; }
+#splitPaneBody[data-editor-theme="ember"] .cm-operator { color: #c98a66 !important; }
+
+#splitPaneBody[data-editor-theme="phosphor"] { background: #f4fbf6; }
+#splitPaneBody[data-editor-theme="phosphor"] .rich-editor { color: #20402c; caret-color: #1e9e5a; }
+#splitPaneBody[data-editor-theme="phosphor"] .rich-editor::selection { background: rgba(30, 158, 90, .24); color: #20402c; }
+#splitPaneBody[data-editor-theme="phosphor"] .CodeMirror { color: #20402c !important; background: #f4fbf6 !important; }
+#splitPaneBody[data-editor-theme="phosphor"] .CodeMirror-gutters { background: #e7f4eb !important; border-right: 1px solid #cde5d4 !important; }
+#splitPaneBody[data-editor-theme="phosphor"] .CodeMirror-linenumber { color: #84ab93 !important; }
+#splitPaneBody[data-editor-theme="phosphor"] .CodeMirror-cursor { border-left: 2px solid #1e9e5a !important; }
+#splitPaneBody[data-editor-theme="phosphor"] .CodeMirror-selected { background: #c4ecd2 !important; }
+#splitPaneBody[data-editor-theme="phosphor"] .cm-keyword { color: #0f7b43 !important; font-weight: 600; }
+#splitPaneBody[data-editor-theme="phosphor"] .cm-def { color: #145c86 !important; }
+#splitPaneBody[data-editor-theme="phosphor"] .cm-variable { color: #20402c !important; }
+#splitPaneBody[data-editor-theme="phosphor"] .cm-variable-2 { color: #3a6b4a !important; }
+#splitPaneBody[data-editor-theme="phosphor"] .cm-string { color: #7a5b12 !important; }
+#splitPaneBody[data-editor-theme="phosphor"] .cm-number { color: #9a4a12 !important; }
+#splitPaneBody[data-editor-theme="phosphor"] .cm-comment { color: #84ab93 !important; font-style: italic; }
+#splitPaneBody[data-editor-theme="phosphor"] .cm-tag { color: #0f7b43 !important; }
+#splitPaneBody[data-editor-theme="phosphor"] .cm-attribute { color: #145c86 !important; }
+#splitPaneBody[data-editor-theme="phosphor"] .cm-property { color: #1e9e5a !important; }
+#splitPaneBody[data-editor-theme="phosphor"] .cm-operator { color: #3a6b4a !important; }
+
+/* one-dark, dracula and monokai ship their own CodeMirror stylesheets, so the
+   pane only has to match the rich-text surface to them. */
+#splitPaneBody[data-editor-theme="oneDark"] { background: #282c34; }
+#splitPaneBody[data-editor-theme="oneDark"] .rich-editor { color: #abb2bf; caret-color: #528bff; }
+#splitPaneBody[data-editor-theme="dracula"] { background: #282a36; }
+#splitPaneBody[data-editor-theme="dracula"] .rich-editor { color: #f8f8f2; caret-color: #bd93f9; }
+#splitPaneBody[data-editor-theme="monokai"] { background: #272822; }
+#splitPaneBody[data-editor-theme="monokai"] .rich-editor { color: #f8f8f2; caret-color: #f92672; }
+
+.editor-host .cm-editor {
+  outline: 0;
+}
+
+.editor-host .cm-scroller {
+  min-height: 100%;
+}
+
+.editor-host .cm-focused {
+  outline: 0;
+}
+
+/* ---- Inline images (Word-style, mixed text + image) ---- */
+.qlx-image {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  cursor: default;
+  transition: box-shadow .14s, outline .14s;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+.qlx-image.qlx-image-selected {
+  outline: 2px solid var(--image-border-selected);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+.qlx-image.qlx-image-broken {
+  display: inline-block;
+  min-width: 80px;
+  min-height: 40px;
+  padding: 6px 10px;
+  color: var(--image-watermark);
+  background: var(--surface);
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+  font-size: 12px;
+  user-select: none;
+}
+.qlx-image:hover:not(.qlx-image-broken) {
+  outline-color: var(--image-border);
+}
+.qlx-image.qlx-image-dragging {
+  opacity: .45;
+}
+.qlx-image.qlx-image-selected:hover {
+  outline-color: var(--image-border-selected);
+}
+/* Resize handles — fixed overlay positioned over the selected image's corners. */
+.image-resize-handles {
+  position: fixed;
+  z-index: 29;
+  pointer-events: none;
+}
+.qlx-image-resize-handle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: var(--image-handle);
+  border: 2px solid var(--image-handle-border);
+  border-radius: 3px;
+  box-shadow: var(--image-handle-shadow);
+  cursor: nwse-resize;
+  pointer-events: auto;
+  transition: transform .1s;
+  touch-action: none;
+}
+.qlx-image-resize-handle[data-corner="nw"],
+.qlx-image-resize-handle[data-corner="ne"] { top: -7px; }
+.qlx-image-resize-handle[data-corner="sw"],
+.qlx-image-resize-handle[data-corner="se"] { bottom: -7px; }
+.qlx-image-resize-handle[data-corner="nw"],
+.qlx-image-resize-handle[data-corner="sw"] { left: -7px; }
+.qlx-image-resize-handle[data-corner="ne"],
+.qlx-image-resize-handle[data-corner="se"] { right: -7px; }
+.qlx-image-resize-handle[data-corner="nw"],
+.qlx-image-resize-handle[data-corner="se"] { cursor: nwse-resize; }
+.qlx-image-resize-handle[data-corner="ne"],
+.qlx-image-resize-handle[data-corner="sw"] { cursor: nesw-resize; }
+.qlx-image-resize-handle:hover,
+.qlx-image-resize-handle:active {
+  transform: scale(1.18);
+}
+.qlx-image-resize-handle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+/* Image context panel — fixed over the editor near the selected image. */
+#imageContextPanel {
+  position: fixed;
+  z-index: 30;
+  width: 208px;
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  padding: 0;
+  font-size: 13px;
+  color: var(--text);
+}
+#imageContextPanel .image-context-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+#imageContextPanel .image-context-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+#imageContextPanel .image-context-body {
+  padding: 8px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+#imageContextPanel .image-presets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+#imageContextPanel .image-preset {
+  padding: 5px 0;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color .12s, background .12s;
+}
+#imageContextPanel .image-preset:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+#imageContextPanel .image-preset:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+#imageContextPanel .image-alignment {
+  display: flex;
+  gap: 6px;
+}
+#imageContextPanel .alignment-button {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 32px;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color .12s, color .12s, background .12s;
+}
+#imageContextPanel .alignment-button:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+}
+#imageContextPanel .alignment-button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+#imageContextPanel .image-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+#imageContextPanel .image-actions .text-button {
+  padding: 4px 9px;
+  font-size: 11px;
+  height: 28px;
+}
+#imageContextPanel .image-actions .text-button.danger {
+  color: var(--danger);
+  background: rgba(223, 61, 80, .1);
+}
+#imageContextPanel .image-actions .text-button.danger:hover {
+  background: var(--danger);
+  color: #fff;
+}
+#imageContextPanel .image-actions .text-button.secondary {
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+#imageContextPanel .image-actions .text-button.secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+}
+@media (max-width: 480px) {
+  /* Phone screens: the horizontal quick toolbar pushed the image button
+     offscreen, so "Insert image" looked missing on Android. Wrap every tool
+     into visible rows instead of a hidden overflow strip. */
+  .quick-toolbar {
+    flex-wrap: wrap;
+    row-gap: 6px;
+    overflow-x: visible;
+  }
+  .editor-actions {
+    flex-wrap: wrap;
+    row-gap: 6px;
+    overflow-x: visible;
+  }
+  #imageContextPanel {
+    width: 196px;
+  }
+  #imageContextPanel .image-presets {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.modal-manager-stage { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; max-height: min(46dvh, 340px); overflow-y: auto; }
+.manager-row { display: flex; align-items: center; gap: 10px; padding: 9px 11px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; }
+.manager-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; font-weight: 700; color: var(--text); }
+.manager-preview { margin-top: 2px; color: var(--muted); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.manager-actions { display: flex; gap: 5px; flex-shrink: 0; }
+.manager-actions button {
+  min-height: 32px; padding: 0 10px; color: var(--text); background: var(--accent-soft); border: 0; border-radius: 7px; font-size: 12px; font-weight: 700; cursor: pointer;
+}
+.manager-actions button.danger { color: var(--danger); background: rgba(223, 61, 80, .12); }
+.manager-actions button.danger:hover { color: #fff; background: var(--danger); }
+.manager-empty { margin: 6px 0; color: var(--muted); font-size: 13px; text-align: center; }
+.manager-footer { display: flex; justify-content: flex-end; gap: 8px; }
+.manager-footer button {
+  min-height: 36px; padding: 0 13px; color: var(--danger); background: rgba(223, 61, 80, .12); border: 0; border-radius: 8px; font-weight: 700; cursor: pointer;
+}
+.modal-label[for="modalTemplateSelect"] + .select-control { width: 100%; margin-top: 6px; }
+
+#saveStatus.save-error { color: var(--danger); }
+#saveStatus.save-error i { color: var(--danger); }
+
+/* Trash / archive icon buttons get a subtle hover cue inside the dark sidebar. */
+#trashButton:hover,
+#archiveButton:hover,
+#templatesButton:hover { color: var(--sidebar-text); background: var(--sidebar-item-hover); }
+
+/* Desktop keeps the Export button and uses the File menu for Word files.
+   Mobile swaps Export for Share in the same slot and shows the Word button.
+   Matched to the app's 760px mobile/desktop breakpoint. */
+#shareButton,
+#wordImportButton { display: none; }
+@media (max-width: 759.98px) {
+  .sidebar .footer-actions {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    justify-content: initial;
+    gap: 5px;
+  }
+  .sidebar .footer-actions .icon-button {
+    width: 100%;
+    max-width: 38px;
+    justify-self: center;
+  }
+  #exportButton { display: none; }
+  #shareButton { display: grid; }
+  #wordImportButton { display: grid; }
+}
+
+/* ---- Imported Word (rich) content inside the editor ---- */
+.rich-editor h1 { margin: .55em 0 .3em; font-size: 1.55em; line-height: 1.25; }
+.rich-editor h2 { margin: .5em 0 .3em; font-size: 1.3em; line-height: 1.3; }
+.rich-editor h3,
+.rich-editor h4,
+.rich-editor h5,
+.rich-editor h6 { margin: .45em 0 .3em; font-size: 1.12em; line-height: 1.35; }
+.rich-editor p { margin: .45em 0; }
+.rich-editor ul,
+.rich-editor ol { margin: .45em 0; padding-left: 26px; }
+.rich-editor li { margin: .2em 0; }
+.rich-editor table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px 0;
+  font-size: .95em;
+}
+.rich-editor th,
+.rich-editor td {
+  border: 1px solid var(--line);
+  padding: 6px 9px;
+  text-align: left;
+  vertical-align: top;
+}
+.rich-editor th { background: var(--surface); font-weight: 700; }
+.rich-editor blockquote {
+  margin: .6em 0;
+  padding: 2px 0 2px 13px;
+  border-left: 3px solid var(--accent);
+  color: var(--muted);
+}
+.rich-editor a { color: var(--accent-strong); }
+.rich-editor code {
+  padding: 1px 5px;
+  background: var(--accent-soft);
+  border-radius: 4px;
+  font-family: var(--editor-font-family, monospace);
+}
+.rich-editor hr { border: 0; border-top: 1px solid var(--line); margin: .9em 0; }
+
+.markdown-preview {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  padding: 22px;
+  color: var(--text);
+  background: var(--surface-solid);
+  line-height: 1.7;
+}
+
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3 {
+  margin: 0 0 12px;
+  color: var(--heading);
+  letter-spacing: 0;
+}
+
+.markdown-preview a { color: var(--accent); }
+.markdown-preview mark { color: var(--note-text); background: var(--note-highlight); }
+
+.markdown-preview p,
+.markdown-preview ul {
+  margin: 0 0 14px;
+}
+
+.markdown-preview code {
+  padding: 2px 5px;
+  background: var(--accent-soft);
+  border-radius: 5px;
+  font-family: "JetBrains Mono", Consolas, monospace;
+}
+
+.editor-frame.preview-split .markdown-preview {
+  position: relative;
+  inset: auto;
+  min-width: 0;
+  min-height: 0;
+}
+@media (max-width: 759.98px) {
+  .editor-frame.preview-split {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .editor-frame.preview-split .editor-host {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+.editor-status {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 5px 10px;
+  padding: 5px 10px;
+  color: var(--muted);
+  font-size: 11px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 0;
+  border-radius: 0 0 6px 6px;
+}
+
+.editor-status i {
+  margin-right: 4px;
+  color: var(--success);
+}
+
+.separator {
+  margin: 0 4px;
+}
+
+.empty-state {
+  width: min(100%, 420px);
+  margin: auto;
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.empty-illustration {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 8px;
+  font-size: 22px;
+}
+
+.empty-state h1 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.empty-state p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.55;
+}  .empty-state.home-list .mobile-home-topic-list {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 0;
+  }
+  .empty-state.home-list .mobile-home-topic-card,
+  .empty-state.home-list .mobile-home-topic,
+  .empty-state.home-list .mobile-home-subtopic {
+    flex-shrink: 0;
+  }
+.mobile-home-topic,
+.mobile-home-subtopic {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 40px;
+  padding: 7px 9px;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+}
+.mobile-home-subtopic {
+  min-height: 34px;
+  padding-left: 28px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.mobile-home-topic:hover,
+.mobile-home-topic:focus-visible,
+.mobile-home-subtopic:hover,
+.mobile-home-subtopic:focus-visible {
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  outline: 0;
+}
+.mobile-home-topic-arrow {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.primary-button {
+  padding: 0 15px;
+  color: var(--on-accent);
+  background: var(--accent);
+}
+
+.secondary-button {
+  padding: 0 15px;
+  color: var(--text);
+  background: var(--accent-soft);
+  border: 1px solid var(--line);
+}
+
+.sidebar-backdrop {
+  display: none;
+}
+
+.sidebar-backdrop.show {
+  position: fixed;
+  inset: 0;
+  z-index: 14;
+  display: block;
+  background: rgba(0, 0, 0, .5);
+}
+
+.modal-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  display: grid;
+  place-items: center;
+  padding: max(16px, env(safe-area-inset-top, 0px)) 16px max(16px, env(safe-area-inset-bottom, 0px));
+  background: rgba(7, 16, 34, .58);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .18s, visibility .18s;
+  backdrop-filter: blur(5px);
+}
+
+.modal-layer.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  position: relative;
+  width: min(100%, 430px);
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  padding: 20px;
+  color: var(--text);
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .28);
+  transform: translateY(6px);
+  transition: transform .16s;
+}
+
+.modal-layer.show .modal {
+  transform: none;
+}
+
+.modal-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 7px;
+  font-size: 15px;
+}
+
+.modal-close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 32px;
+  height: 32px;
+  color: var(--muted);
+  background: transparent;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.modal-close:hover {
+  background: var(--accent-soft);
+}
+
+.modal h2 {
+  margin: 13px 0 6px;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.modal p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.modal-label {
+  display: block;
+  margin: 15px 0 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.modal input[type="text"],
+.settings-row input[type="number"] {
+  width: 100%;
+  height: 38px;
+  padding: 0 11px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  outline: 0;
+}
+
+.modal input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(86, 103, 245, .16);
+}
+
+.form-error {
+  min-height: 18px;
+  margin-top: 6px;
+  color: var(--danger);
+  font-size: 12px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.settings-modal {
+  width: min(100%, 520px);
+}
+
+.settings-grid {
+  display: grid;
+  gap: 0;
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 42px;
+  padding: 4px 2px;
+  font-size: 13.5px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--line);
+}
+
+.settings-row input[type="number"] {
+  width: 96px;
+  height: 32px;
+  font-size: 14px;
+}
+
+.toggle-row {
+  cursor: pointer;
+}
+
+.toggle-row input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.storage-row {
+  color: var(--muted);
+}
+
+.storage-row strong {
+  color: var(--text);
+  font-size: 13px;
+}
+
+@media (max-width: 420px) {
+  .settings-row {
+    font-size: 13px;
+  }
+
+  .settings-row input[type="number"] {
+    width: 92px;
+  }
+
+  .settings-modal {
+    max-height: calc(100dvh - 48px);
+  }
+}
+
+@media (max-width: 759.98px) {
+  .empty-state {
+    width: 100%;
+    padding: 24px 14px;
+  }
+  .empty-state .empty-illustration {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 14px;
+    font-size: 20px;
+  }
+  .empty-state h1 {
+    font-size: 16px;
+  }
+
+  /* Notes Library screen (mobile only): heading, Create Notes button and hint,
+     with every note as its own rectangular box (title + > arrow) in one
+     touch-scrollable column. The sizing chain below is unchanged: flex against
+     main-content with vh then dvh fallbacks keeps the list box bounded. */
+  .empty-state.home-list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: 0;
+    /* Height fallbacks for engines where the flex chain or dvh is off:
+       vh first, then dvh (same dual pattern as the mobile sidebar). */
+    height: calc(100vh - var(--header-height) - env(safe-area-inset-top, 0px));
+    height: calc(100dvh - var(--header-height) - env(safe-area-inset-top, 0px));
+    margin: 0 auto;
+    padding: 16px max(14px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
+    text-align: left;
+    overflow: hidden;
+    overscroll-behavior: contain;
+  }
+  .empty-state.home-list .empty-illustration {
+    display: none;
+  }
+  .empty-state.home-list h1 {
+    margin: 0;
+    color: var(--heading);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+  .empty-state.home-list p {
+    display: block;
+    margin: -6px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .empty-state.home-list .primary-button {
+    align-self: flex-start;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+  .empty-state.home-list .mobile-home-topic-list {
+    flex: 1 1 auto;
+    width: 100%;
+    margin: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* The single scroll surface for the notes list: swipe up/down reaches
+       every note, but no scrollbar or slider is ever drawn. */
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    touch-action: pan-y;
+    padding-bottom: 2px;
+  }
+  .empty-state.home-list .mobile-home-topic-list::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+  /* Each note is a self-contained rectangular box; a note's subtopics sit
+     beneath the title inside the same box, separated by a hairline. */
+  .empty-state.home-list .mobile-home-topic-card {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-solid);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .empty-state.home-list .mobile-home-topic {
+    flex: 0 0 auto;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-height: 54px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+    border-radius: 0;
+  }
+  .empty-state.home-list .mobile-home-topic:active {
+    background: var(--accent-soft);
+  }
+  .empty-state.home-list .mobile-home-topic span {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .empty-state.home-list .mobile-home-subtopic {
+    flex: 0 0 auto;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 14px 10px 32px;
+    color: var(--muted);
+    font-size: 13.5px;
+    text-align: left;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+  }
+  .empty-state.home-list .mobile-home-subtopic:active {
+    background: var(--accent-soft);
+  }
+  .empty-state.home-list .mobile-home-topic-arrow {
+    flex: 0 0 auto;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  /* Desktop: when no note is open the empty workspace fills the editor
+     area width (the right panel) instead of the 420px centered fallback
+     used on mobile / when there are no topics at all. */
+  @media (min-width: 760px) {
+    .main-content > .empty-state {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 28px 24px;
+      text-align: center;
+    }
+  }
+
+  /* Note Tabs and Markdown Split Preview are desktop-only features. */
+  #noteTabs,
+  #noteTabContextMenu,
+  #previewButton,
+  #markdownPreview {
+    display: none !important;
+  }
+  .note-tabs:not(.hidden) + .editor-area {
+    height: calc(100dvh - var(--header-height) - env(safe-area-inset-top, 0px));
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.focus-restore-button {
+  position: fixed;
+  bottom: max(8px, env(safe-area-inset-bottom));
+  left: max(12px, env(safe-area-inset-left, 0px));
+  z-index: 12;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  color: var(--text-primary);
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  font-weight: 700;
+}
+
+.focus-restore-button:hover,
+.focus-restore-button:focus-visible {
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  outline: 0;
+}
+
+body.focus-mode .sidebar,
+body.focus-mode .mobile-header,
+body.focus-mode .note-tabs,
+body.focus-mode .editor-toolbar,
+body.focus-mode .quick-toolbar,
+body.focus-mode .editor-search-panel {
+  display: none;
+}
+
+body.focus-mode .editor-area {
+  height: calc(100dvh - env(safe-area-inset-top, 0px));
+  padding: env(safe-area-inset-top, 0px) 0 0;
+}
+
+body.focus-mode .editor-frame {
+  margin-bottom: 54px;
+  border-radius: 0;
+  border: 0;
+}
+
+body.focus-mode .editor-status {
+  position: fixed;
+  right: 10px;
+  bottom: 8px;
+  z-index: 3;
+  width: max-content;
+  padding: 6px 8px;
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+@media (max-width: 759.98px) {
+  /* Mobile-only fullscreen status layout: keep Saved and the three counts
+     readable, but remove only the redundant editor-mode/cursor labels. */
+  body.focus-mode .editor-status {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 2px 8px;
+    padding: 4px max(8px, env(safe-area-inset-left, 0px)) max(5px, env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+    font-size: 11px;
+    border-radius: 8px 8px 0 0;
+  }
+  body.focus-mode .editor-status > span {
+    min-width: 0;
+    white-space: nowrap;
+  }
+  body.focus-mode #cursorStatus,
+  body.focus-mode #languageStatus {
+    display: none;
+  }
+  body.focus-mode .editor-frame {
+    /* Reserve room for the status strip plus the restore control so neither
+       can cover the last line of the note. */
+    margin-bottom: 96px;
+  }
+  body.focus-mode .focus-restore-button {
+    /* Keep the restore control above the mobile status strip and outside the
+       editor's reserved bottom area. */
+    bottom: max(56px, calc(48px + env(safe-area-inset-bottom, 0px)));
+  }
+}
+
+@media (min-width: 760px) {
+  body.focus-mode .editor-frame {
+    /* Keep the fullscreen restore control in its own bottom lane so it cannot
+       cover the final editor line in a long note. */
+    margin-bottom: 88px;
+  }
+  body.focus-mode .focus-restore-button {
+    bottom: max(24px, env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (min-width: 760px) {
+  .sidebar {
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    width: 310px;
+    height: calc(100dvh - env(safe-area-inset-top, 0px));
+    min-height: 0;
+    transform: none;
+    box-shadow: none;
+    padding: max(16px, env(safe-area-inset-top, 0px)) 14px max(14px, env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px));
+    overflow: hidden;
+  }
+
+  .mobile-header {
+    display: none;
+  }
+
+  .editor-area {
+    height: calc(100dvh - env(safe-area-inset-top, 0px));
+    padding: max(14px, env(safe-area-inset-top, 0px)) max(clamp(16px, 3vw, 44px), env(safe-area-inset-right, 0px)) 12px max(clamp(16px, 3vw, 44px), env(safe-area-inset-left, 0px));
+  }
+
+  .note-tabs:not(.hidden) + .editor-area {
+    height: calc(100dvh - 38px - env(safe-area-inset-top, 0px));
+  }
+
+  .editor-toolbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+
+  .eyebrow {
+    display: none;
+  }
+
+  .title-block {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .editor-toolbar h1 {
+    min-width: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .editor-toolbar p {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: 11.5px;
+  }
+
+  .editor-status {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 759.98px) {
+  .note-tabs:not(.hidden) + .editor-area {
+    height: calc(100dvh - var(--header-height) - 38px - env(safe-area-inset-top, 0px));
+  }
+}
+
+@media (max-width: 420px) {
+  .editor-area {
+    padding-left: max(7px, env(safe-area-inset-left, 0px));
+    padding-right: max(7px, env(safe-area-inset-right, 0px));
+  }
+
+  .editor-toolbar h1 {
+    font-size: 15px;
+  }
+
+  .select-control {
+    min-width: 104px;
+  }
+
+  /* Narrow phones: the two fixed grid columns would squeeze the counts span,
+     so the attached status bar wraps its four items naturally instead. */
+  .editor-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 10px;
+  }
+
+  .modal {
+    padding: 18px;
+  }
+}

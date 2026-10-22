@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#111827" />
+  <meta name="description" content="A fast local notes and code editor." />
+  <title>Quillix Notepad</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="icon" href="quillix-512.png" type="image/png" sizes="512x512" />
+  <link rel="apple-touch-icon" href="quillix-icon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script>
+    /* Apply the saved app theme before paint so no screen flashes the wrong palette.
+       Values: light (Theme 1), dark (Theme 2), ember (Theme 3), phosphor (Theme 4). */
+    try {
+      var _t = localStorage.getItem('developer-notes-theme') || 'dark';
+      if (['light', 'dark', 'ember', 'phosphor'].indexOf(_t) === -1) _t = 'dark';
+      document.documentElement.setAttribute('data-app-theme', _t);
+      if (_t === 'dark' || _t === 'ember') document.documentElement.classList.add('theme-dark');
+    } catch (_) {}
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css?v=9.9" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark"><i class="fa-solid fa-code"></i></div>
+        <span>Quillix Notepad</span>
+      </div>
+
+      <button class="new-topic-button" id="newTopicButton">
+        <i class="fa-solid fa-plus"></i>
+        <span>New Topic</span>
+        <kbd>Alt N</kbd>
+      </button>
+
+      <label class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input id="globalSearchInput" type="search" autocomplete="off" placeholder="Search all notes" />
+        <kbd>Ctrl K</kbd>
+      </label>
+
+      <div class="topics-heading">
+        <span>TOPICS</span>
+        <span id="topicCount">0</span>
+      </div>
+      <nav class="topic-list" id="topicList" aria-label="Topics"></nav>
+
+      <button class="recent-panel-button" id="recentPanelButton" type="button" aria-haspopup="dialog" title="Open recent notes">
+        <span class="recent-panel-button-label"><i class="fa-regular fa-clock"></i> RECENT</span>
+        <span class="recent-panel-count" id="recentPanelCount" aria-hidden="true">0</span>
+      </button>
+
+      <div class="sidebar-footer">
+        <div class="footer-actions">
+          <button class="icon-button" id="templatesButton" title="Insert template into current note" aria-label="Insert template"><i class="fa-solid fa-file-import"></i></button>
+          <button class="icon-button" id="trashButton" title="Trash — restore or delete forever" aria-label="Trash"><i class="fa-solid fa-trash-can"></i></button>
+          <button class="icon-button" id="archiveButton" title="Archive" aria-label="Archive"><i class="fa-solid fa-box-archive"></i></button>
+          <button class="icon-button" id="backupButton" title="Export backup" aria-label="Export backup"><i class="fa-solid fa-database"></i></button>
+          <button class="icon-button" id="shareButton" title="Share note" aria-label="Share note"><i class="fa-solid fa-share-nodes"></i></button>
+          <button class="icon-button" id="exportButton" title="Export current note" aria-label="Export current note"><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+          <button class="icon-button" id="htmlExportButton" title="Export current note as HTML" aria-label="Export as HTML"><i class="fa-solid fa-file-code"></i></button>
+          <button class="icon-button" id="pdfExportButton" title="Print / Save as PDF" aria-label="Save as PDF"><i class="fa-solid fa-file-pdf"></i></button>
+          <button class="icon-button" id="importButton" title="Import files" aria-label="Import files"><i class="fa-solid fa-download"></i></button>
+          <button class="icon-button" id="wordImportButton" title="Open Word document (.docx)" aria-label="Open Word document"><i class="fa-solid fa-file-word"></i></button>
+          <button class="icon-button" id="settingsButton" title="Settings" aria-label="Settings"><i class="fa-solid fa-gear"></i></button>
+        </div>
+			<div class="developer-credit">
+				<span class="developer-star">✦</span> Developed by Khan
+			</div>      
+		</div>
+    </aside>
+
+    <div id="sidebarDivider" class="sidebar-divider" title="Drag to resize sidebar. Press Enter to toggle." aria-label="Resize sidebar" role="separator" aria-orientation="vertical" tabindex="0"><span class="sidebar-divider-thumb" aria-hidden="true"></span></div>
+
+    <main class="main-content">
+      <!-- One sidebar control, anchored to the panel edge: it tracks the divider
+           when the sidebar is resized and shares the note-tab row's height, so
+           it never crosses the tab strip's border line. -->
+      <button id="sidebarCollapseToggle" class="sidebar-collapse-toggle" type="button" title="Hide sidebar" aria-label="Hide sidebar" aria-expanded="true">
+        <i class="fa-solid fa-table-columns"></i>
+      </button>
+      <header class="mobile-header">
+        <button class="icon-button" id="menuButton" title="Open menu" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        <span class="mobile-brand">Quillix Notepad</span>
+        <button class="icon-button" id="mobileNewButton" title="New topic" aria-label="New topic"><i class="fa-solid fa-plus"></i></button>
+      </header>
+
+      <div class="note-tabs hidden" id="noteTabs" role="tablist" aria-label="Open notes"></div>
+      <div class="note-tab-context-menu hidden" id="noteTabContextMenu" role="menu" aria-label="Note tab actions">
+        <button type="button" id="noteTabSplitButton" role="menuitem"><i class="fa-solid fa-table-columns"></i> Split editor / preview</button>
+        <button type="button" id="noteTabSplitViewButton" role="menuitem"><i class="fa-solid fa-code-compare"></i> Open in split view</button>
+      </div>
+
+      <section class="empty-state" id="emptyState">
+        <div class="empty-illustration"><i class="fa-regular fa-note-sticky"></i></div>
+        <h1 id="emptyStateTitle">No topics yet.</h1>
+        <p id="emptyStateDescription">Create a topic to start writing.</p>
+        <button class="primary-button" data-open-create><i class="fa-solid fa-plus"></i> Create topic</button>
+        <div class="mobile-home-topic-list hidden" id="mobileHomeTopicList" aria-label="Your topics"></div>
+      </section>
+
+      <section class="editor-area hidden" id="editorArea">
+        <div class="editor-toolbar">
+          <div class="title-block">
+            <div class="eyebrow"><i class="fa-solid fa-folder-open"></i> NOTEBOOK</div>
+            <h1 id="topicTitle">Untitled</h1>
+            <p id="lastEdited">Last edited just now</p>
+          </div>
+          <div class="editor-actions">
+            <select class="select-control" id="languageSelect" title="Language" aria-label="Language"></select>
+            <select class="select-control" id="editorThemeSelect" title="Editor theme" aria-label="Editor theme">
+              <option value="plain">Plain Text</option>
+              <option value="ember">Ember</option>
+              <option value="phosphor">Phosphor</option>
+              <option value="github">GitHub</option>
+              <option value="oneDark">One Dark</option>
+              <option value="dracula">Dracula</option>
+              <option value="monokai">Monokai</option>
+            </select>
+            <button class="circle-button" id="favoriteButton" title="Favorite" aria-label="Favorite"><i class="fa-regular fa-star"></i></button>
+            <button class="circle-button" id="topicHistoryButton" title="Version history" aria-label="Version history"><i class="fa-solid fa-clock-rotate-left"></i></button>
+            <button class="circle-button" id="pinButton" title="Pin topic" aria-label="Pin topic"><i class="fa-solid fa-thumbtack"></i></button>
+            <button class="circle-button" id="vaultButton" title="Lock note with a numeric PIN" aria-label="Lock note with a numeric PIN"><i class="fa-solid fa-lock"></i></button>
+            <button class="circle-button danger" id="deleteCurrentButton" title="Delete topic" aria-label="Delete topic"><i class="fa-regular fa-trash-can"></i></button>
+          </div>
+        </div>
+
+        <div class="quick-toolbar" aria-label="Editor tools">
+          <button class="tool-button" id="findButton" title="Find" aria-label="Find"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button class="tool-button" id="replaceButton" title="Replace" aria-label="Replace"><i class="fa-solid fa-repeat"></i></button>
+          <button class="tool-button" id="undoButton" title="Undo" aria-label="Undo"><i class="fa-solid fa-rotate-left"></i></button>
+          <button class="tool-button" id="redoButton" title="Redo" aria-label="Redo"><i class="fa-solid fa-rotate-right"></i></button>
+          <button class="tool-button" id="textColorButton" title="Text color" aria-label="Text color"><i class="fa-solid fa-palette"></i></button>
+          <input id="textColorPicker" class="native-color-picker" type="color" value="#5667f5" aria-label="Choose text color" />
+          <button class="tool-button" id="decreaseFontButton" title="Decrease font size" aria-label="Decrease font size"><i class="fa-solid fa-minus"></i></button>
+          <button class="tool-button" id="increaseFontButton" title="Increase font size" aria-label="Increase font size"><i class="fa-solid fa-plus"></i></button>
+          <button class="tool-button" id="wordWrapButton" title="Word wrap" aria-label="Word wrap"><i class="fa-solid fa-align-left"></i></button>
+          <button class="tool-button" id="previewButton" title="Markdown preview" aria-label="Markdown preview"><i class="fa-brands fa-markdown"></i></button>
+          <button class="tool-button" id="splitViewButton" title="Split view: edit two notes side by side (Ctrl + \)" aria-label="Split view" aria-pressed="false"><i class="fa-solid fa-code-compare"></i></button>
+          <button class="tool-button" id="focusButton" title="Distraction-free mode" aria-label="Distraction-free mode"><i class="fa-solid fa-expand"></i></button>
+          <button class="tool-button" id="imageInsertButton" title="Insert image" aria-label="Insert image"><i class="fa-solid fa-image"></i></button>
+          <input id="imageInput" class="native-color-picker" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp,image/svg+xml" hidden />
+        </div>
+
+        <button class="focus-restore-button hidden" id="focusRestoreButton" type="button" title="Restore note window" aria-label="Restore note window">
+          <i class="fa-solid fa-compress"></i>
+        </button>
+
+        <div class="editor-search-panel hidden" id="editorSearchPanel">
+          <label class="mini-field">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="currentSearchInput" type="search" autocomplete="off" placeholder="Find in note" />
+          </label>
+          <label class="mini-field replace-field">
+            <i class="fa-solid fa-pen"></i>
+            <input id="replaceInput" type="text" autocomplete="off" placeholder="Replace" />
+          </label>
+          <span class="search-count" id="searchCount">0 results</span>
+          <button class="tool-button" id="previousResultButton" title="Previous result" aria-label="Previous result"><i class="fa-solid fa-chevron-up"></i></button>
+          <button class="tool-button" id="nextResultButton" title="Next result" aria-label="Next result"><i class="fa-solid fa-chevron-down"></i></button>
+          <button class="text-button" id="replaceOneButton">Replace</button>
+          <button class="text-button" id="replaceAllButton">All</button>
+          <button class="tool-button" id="closeSearchButton" title="Close search" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="editor-frame" id="editorFrame">
+          <div class="locked-note-state hidden" id="lockedNoteState">
+            <div class="locked-note-icon"><i class="fa-solid fa-lock"></i></div>
+            <h2>Note locked</h2>
+            <p>This note is protected by your password.</p>
+            <button class="primary-button" id="unlockNoteButton" type="button"><i class="fa-solid fa-key"></i> Unlock note</button>
+          </div>
+          <div class="split-pane-bar split-left-bar hidden" id="splitLeftBar" aria-label="Left note panel">
+            <span class="split-pane-title" id="splitLeftTitle">Untitled</span>
+            <select class="select-control split-pane-theme" id="splitLeftTheme" aria-label="Left panel editor theme"></select>
+            <button class="icon-button split-pane-close" id="splitLeftClose" type="button" title="Close this panel" aria-label="Close left panel"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <div id="editorHost" class="editor-host"></div>
+          <div id="splitDivider" class="split-divider hidden" role="separator" aria-orientation="vertical" tabindex="0" aria-label="Resize split view"></div>
+          <aside id="splitPane" class="split-pane hidden" aria-label="Second note"></aside>
+          <article id="markdownPreview" class="markdown-preview hidden"></article>
+        </div>
+
+        <footer class="editor-status">
+          <span id="saveStatus"><i class="fa-solid fa-cloud-check"></i> Saved</span>
+          <span><strong id="wordCount">0</strong> words <span class="separator">/</span> <strong id="characterCount">0</strong> characters <span class="separator">/</span> <strong id="lineCount">1</strong> lines</span>
+          <span id="cursorStatus">Ln 1, Col 1</span>
+          <span id="languageStatus">Plain text</span>
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <input id="fileInput" type="file" accept=".json,.txt,.md,.markdown,.js,.mjs,.ts,.tsx,.py,.java,.c,.h,.cpp,.cc,.cxx,.css,.html,.htm,.xml,.sql,.yml,.yaml" multiple hidden />
+  <input id="wordInput" type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden />
+
+  <div class="modal-layer" id="modalLayer" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-icon" id="modalIcon"><i class="fa-solid fa-folder-plus"></i></div>
+      <h2 id="modalTitle">New topic</h2>
+      <p id="modalDescription">Give your new note a clear name.</p>
+      <div id="modalInputWrap">
+        <label class="modal-label" for="modalInput">Topic title</label>
+        <input id="modalInput" type="text" maxlength="120" autocomplete="off" placeholder="e.g. api-routes.js" />
+        <label class="modal-label" for="modalTemplateSelect">Start from (optional template)</label>
+        <select id="modalTemplateSelect" class="select-control" aria-label="Start from template">
+          <option value="blank-note">Blank Note</option>
+        </select>
+        <p class="form-error" id="formError"></p>
+      </div>
+      <div class="modal-manager-stage" id="modalManagerStage"></div>
+      <div class="modal-actions">
+        <button class="secondary-button" id="modalCancel">Cancel</button>
+        <button class="primary-button" id="modalConfirm">Create topic</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="image-resize-handles hidden" id="imageResizeHandles" aria-hidden="true">
+    <span class="qlx-image-resize-handle" data-corner="nw"></span>
+    <span class="qlx-image-resize-handle" data-corner="ne"></span>
+    <span class="qlx-image-resize-handle" data-corner="sw"></span>
+    <span class="qlx-image-resize-handle" data-corner="se"></span>
+  </div>
+
+  <div class="image-context-panel hidden" id="imageContextPanel">
+      <div class="image-context-head">
+        <span class="image-context-title">Image</span>
+        <button class="icon-button" id="imageContextClose" aria-label="Close image controls"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="image-context-body">
+        <div class="image-presets" role="group" aria-label="Image size presets">
+          <button class="image-preset" data-preset="small" type="button">Small</button>
+          <button class="image-preset" data-preset="medium" type="button">Medium</button>
+          <button class="image-preset" data-preset="large" type="button">Large</button>
+          <button class="image-preset" data-preset="original" type="button">Original</button>
+        </div>
+        <div class="image-alignment" role="group" aria-label="Image alignment">
+          <button class="alignment-button" data-align="left" type="button" title="Align left"><i class="fa-solid fa-align-left"></i></button>
+          <button class="alignment-button" data-align="center" type="button" title="Align center"><i class="fa-solid fa-align-center"></i></button>
+          <button class="alignment-button" data-align="right" type="button" title="Align right"><i class="fa-solid fa-align-right"></i></button>
+        </div>
+        <div class="image-actions">
+          <button class="text-button" id="imageReplaceButton" type="button">Replace image</button>
+          <button class="text-button danger" id="imageDeleteButton" type="button">Delete image</button>
+          <button class="text-button secondary" id="imageRestoreButton" type="button">Restore original size</button>
+        </div>
+        <input id="imageReplaceInput" class="native-color-picker" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp,image/svg+xml" hidden />
+      </div>
+    </div>
+
+  <div class="modal-layer" id="settingsLayer" aria-hidden="true">
+    <div class="modal settings-modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <button class="modal-close" id="settingsClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-icon"><i class="fa-solid fa-gear"></i></div>
+      <h2 id="settingsTitle">Settings</h2>
+      <div class="settings-theme-section">
+        <div class="theme-slider-block">
+          <div class="theme-slider-head">
+            <span class="theme-slider-label" id="themeSliderLabel"><i class="fa-solid fa-palette"></i> Theme</span>
+            <span class="theme-slider-value" id="themeSliderValue">Theme 2 · Dark</span>
+          </div>
+          <input type="range" id="themeSlider" class="theme-slider" min="1" max="4" step="1" value="2"
+                 aria-label="Application theme selector" aria-valuetext="Theme 2, Dark" />
+          <div class="theme-slider-ticks" aria-hidden="true">
+            <span data-theme-tick="light"></span><span data-theme-tick="dark"></span><span data-theme-tick="ember"></span><span data-theme-tick="phosphor"></span>
+          </div>
+        </div>
+      </div>
+      <div class="settings-grid">
+        <label class="settings-row">
+          <span>Font size</span>
+          <input id="fontSizeSetting" type="number" min="12" max="28" step="1" />
+        </label>
+        <label class="settings-row">
+          <span>Tab size</span>
+          <input id="tabSizeSetting" type="number" min="2" max="8" step="1" />
+        </label>
+        <label class="settings-row toggle-row">
+          <span>Word wrap</span>
+          <input id="wordWrapSetting" type="checkbox" />
+        </label>
+        <label class="settings-row toggle-row">
+          <span>Line numbers</span>
+          <input id="lineNumbersSetting" type="checkbox" />
+        </label>
+        <label class="settings-row toggle-row">
+          <span>Autosave</span>
+          <input id="autosaveSetting" type="checkbox" />
+        </label>
+        <div class="settings-row storage-row">
+          <span>Storage used</span>
+          <strong id="storageUsage">—</strong>
+        </div>
+        <div class="settings-row storage-row">
+          <span>Notes / archived / trashed</span>
+          <strong id="storageCounts">—</strong>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="secondary-button" id="exportAllButton">Export TXT</button>
+        <button class="primary-button" id="settingsDone">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-layer" id="recentLayer" aria-hidden="true">
+    <div class="modal settings-modal recent-modal" role="dialog" aria-modal="true" aria-labelledby="recentTitle">
+      <button class="modal-close" id="recentClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-icon"><i class="fa-regular fa-clock"></i></div>
+      <h2 id="recentTitle">Recent</h2>
+      <p class="recent-modal-hint">Jump back to the notes you opened most recently.</p>
+      <nav class="recent-list recent-panel-list" id="recentList" aria-label="Recent notes"></nav>
+      <div class="modal-actions">
+        <button class="primary-button" id="recentDone">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js?v=10.0"></script>
+</body>
+</html>
