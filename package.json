@@ -1,0 +1,53 @@
+{
+  "name": "quillix-notepad",
+  "version": "1.7.0",
+  "description": "Quillix Notepad - a local-first notes and code editor (PWA + Electron)",
+  "main": "electron/main.js",
+  "scripts": {
+    "start:web": "node scripts/dev-server.js",
+    "start:desktop": "electron .",
+    "build:desktop": "electron-builder --win portable --x64",
+    "build:desktop:installer": "electron-builder --win nsis --x64",
+    "sync:android": "cap sync android",
+    "build:android": "cd android && ./gradlew assembleDebug"
+  },
+  "author": "Khan",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "@capacitor/android": "^6.2.2",
+    "@capacitor/cli": "^6.2.2",
+    "@capacitor/core": "^6.2.2",
+    "electron": "^44.7.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.khan.quillixnotepad.desktop",
+    "productName": "Quillix Notepad",
+    "directories": {
+      "output": "desktop-build"
+    },
+    "files": [
+      "electron/**",
+      "outputs/**"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "icon": "electron/icon.ico"
+    },
+    "portable": {
+      "artifactName": "QuillixNotepad-Portable.exe"
+    },
+    "nsis": {
+      "artifactName": "QuillixNotepad-Setup.exe",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "dependencies": {
+    "@capacitor/filesystem": "^6.0.4",
+    "@capacitor/share": "^6.0.4"
+  }
+}

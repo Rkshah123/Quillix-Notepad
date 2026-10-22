@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+desktop-build/
+outputs/
+dist/
+build/
+coverage/
+
+# Android generated files
+android/.gradle/
+android/.cxx/
+android/local.properties
+android/build/
+android/app/build/
+
+# APKs and installers
+*.apk
+*.aab
+*.exe
+*.msi
+*.dmg
+
+# Signing keys and secrets
+*.jks
+*.keystore
+.env
+.env.*
+!.env.example
+
+# Screenshots and temporary testing files
+dev-shots/
+device-shots/
+sidebar-shots/
+
+# APK backups
+apk-backup/
+
+# Logs and temporary files
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,42 @@
+Option 1 — Easiest
+Go to:
+Quillix/Codex/2026-08-07/c/outputs/
+Find:
+index.html
+Double-click index.html
+It will open in Chrome.
+
+That's it. Your Quillix app should run.
+
+Option 2 — Better: run it as a local website
+
+This is better if you want to test the PWA installation.
+
+1. Open the outputs folder
+
+For example:
+
+C:\Users\ShahrukhKhan\...\Quillix\Codex\2026-08-07\c\outputs
+2. Click the folder's address bar
+
+Type:
+
+cmd
+
+and press Enter.
+
+A Command Prompt will open already inside that folder.
+
+3. Run:
+python -m http.server 8080
+
+You should see something like:
+
+Serving HTTP on 0.0.0.0 port 8080
+4. Open Chrome
+
+Go to:
+
+http://localhost:8080
+
+Your app should appear.
